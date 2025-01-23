@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { View, StyleSheet, Animated } from "react-native";
+import { Text, View, StyleSheet, Animated } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import Users from "@/constants/profile.json";
 import Icons from "@/constants/icons";
@@ -8,70 +8,67 @@ import { AppHeaderText, Card, IconWrapper, UserImage } from "../components";
 const ProfileSwiper = ({
   opacity,
   setUserSelection,
+  handleSwiped,
 }: {
   opacity: Animated.Value;
   setUserSelection: Function;
+  handleSwiped: Function;
 }) => {
   const scales = useRef(Icons.map(() => new Animated.Value(1))).current; // Create unique scales for each icon
 
   const handleSwipedLeft = (cardIndex: number) => {
-    opacity.setValue(1);
     setUserSelection(-1);
-    Animated.timing(opacity, {
-      toValue: 0, // Fade out to 0
-      duration: 300, // Fade duration in ms
-      useNativeDriver: true,
-    }).start();
+    handleSwiped();
   };
 
   const handleSwipedDown = (cardIndex: number) => {
-    opacity.setValue(1);
     setUserSelection(1);
-    Animated.timing(opacity, {
-      toValue: 0, // Fade out to 0
-      duration: 300, // Fade duration in ms
-      useNativeDriver: true,
-    }).start();
+    handleSwiped();
   };
 
   const handleSwipedRight = (cardIndex: number) => {
-    opacity.setValue(1);
     setUserSelection(2);
-    Animated.timing(opacity, {
-      toValue: 0, // Fade out to 0
-      duration: 300, // Fade duration in ms
-      useNativeDriver: true,
-    }).start();
+    handleSwiped();
   };
   return (
-    <Swiper
-      backgroundColor={"none"}
-      infinite={true}
-      cards={Users}
-      renderCard={(user) => (
-        <Card>
-          <UserImage image={user.image} />
-          <AppHeaderText>{user.name}</AppHeaderText>
-          <View style={styles.iconContainer}>
-            {Icons.map((icon, index) => (
-              <IconWrapper
-                icon={icon}
-                scale={scales[index]}
-                index={index}
-                key={icon.id}
-              />
-            ))}
-          </View>
-        </Card>
-      )}
-      onSwipedRight={handleSwipedRight}
-      onSwipedLeft={handleSwipedLeft}
-      onSwipedBottom={handleSwipedDown}
-    />
+    <View style={styles.container}>
+      <Swiper
+        backgroundColor={"none"}
+        infinite={true}
+        cards={Users}
+        renderCard={(user) => (
+          <Card>
+            <UserImage image={user.image} />
+            <AppHeaderText>{user.name}</AppHeaderText>
+            <View style={styles.iconContainer}>
+              {Icons.map((icon, index) => (
+                <IconWrapper
+                  icon={icon}
+                  scale={scales[index]}
+                  index={index}
+                  key={icon.id}
+                />
+              ))}
+            </View>
+          </Card>
+        )}
+        onSwipedRight={handleSwipedRight}
+        onSwipedLeft={handleSwipedLeft}
+        onSwipedBottom={handleSwipedDown}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: "100%",
+    borderTopWidth: 1,
+    borderTopColor: "gray",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   iconContainer: {
     flexDirection: "row",
     marginTop: 25,

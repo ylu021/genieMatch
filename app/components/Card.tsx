@@ -7,7 +7,8 @@ const Card = ({ children }: { children: React.ReactNode }) => {
 
 const styles = StyleSheet.create({
   card: {
-    flex: 1,
+    alignSelf: "center",
+    alignContent: "center",
     justifyContent: "center",
     alignItems: "center",
     width: 300,

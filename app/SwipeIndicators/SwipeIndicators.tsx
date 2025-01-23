@@ -5,13 +5,16 @@ import { Text, Animated, Dimensions, StyleSheet } from "react-native";
 export default function SwipeIndicators({
   opacity,
   selection,
+  completed,
 }: {
   opacity: Animated.Value;
   selection: number;
+  completed: boolean;
 }) {
   return (
     <>
       <Animated.View style={[styles.nopeContainer, { opacity }]}>
+        {completed && <Text style={styles.nopeText}>Completed</Text>}
         {selection === -1 && <Text style={styles.nopeText}>NOPE</Text>}
         {selection === 2 && <Text style={styles.nopeText}>LOVE</Text>}
         {selection === 1 && <Text style={styles.nopeText}>LIKE</Text>}
@@ -25,7 +28,7 @@ const screenWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
   nopeContainer: {
     position: "absolute",
-    top: "75%",
+    top: "60%",
     left: screenWidth * 0.5 - 5,
     transform: [{ translateX: -50 }, { translateY: -50 }],
     zIndex: 10,
