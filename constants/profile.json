@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Alex",
+    "age": 28,
+    "bio": "Tech enthusiast who loves hiking, photography, and making the perfect cup of coffee.",
+    "interests": ["Hiking", "Photography", "Coffee", "Coding"],
+    "image": "https://placecats.com/300/300?image=1",
+    "preferences": {
+      "ageRange": [25, 32],
+      "sharedInterests": ["Hiking", "Photography", "Cooking"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "Taylor",
+    "age": 30,
+    "bio": "Dog lover, traveler, and part-time foodie. Always planning my next adventure!",
+    "interests": ["Dogs", "Travel", "Food", "Yoga"],
+    "image": "https://placecats.com/400/300?image=2",
+    "preferences": {
+      "ageRange": [28, 35],
+      "sharedInterests": ["Dogs", "Travel"]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Jordan",
+    "age": 26,
+    "bio": "Aspiring musician with a love for books, classic movies, and spontaneous road trips.",
+    "interests": ["Music", "Books", "Movies", "Road Trips"],
+    "image": "https://placecats.com/500/300?image=3",
+    "preferences": {
+      "ageRange": [28, 35],
+      "sharedInterests": ["Music", "Travel"]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Casey",
+    "age": 24,
+    "bio": "Fitness junkie and plant parent. Always up for a game of basketball or a smoothie date.",
+    "interests": ["Fitness", "Plants", "Basketball", "Cooking"],
+    "image": "https://placecats.com/600/300?image=4",
+    "preferences": {
+      "ageRange": [21, 25],
+      "sharedInterests": ["Fitness", "Sports"]
+    }
+  }
+]

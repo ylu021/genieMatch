@@ -1,74 +1,156 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useRef, useState } from "react";
+import {
+  Text,
+  Image,
+  StyleSheet,
+  View,
+  Dimensions,
+  Animated,
+  Pressable,
+} from "react-native";
+import Swiper from "react-native-deck-swiper";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import users from "../../constants/profile.json";
+import { PreferenceSearchBar } from "../preferences";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const icons = [
+  { id: 1, name: "meho", color: "gray", size: 30 },
+  { id: 2, name: "smile-circle", color: "orange", size: 40 },
+  { id: 3, name: "heart", color: "red", size: 30 },
+];
 
 export default function HomeScreen() {
+  const scales = useRef(icons.map(() => new Animated.Value(1))).current; // Create unique scales for each icon
+  const opacity = useRef(new Animated.Value(0)).current; // nope text
+  const [selection, setUserSelection] = useState(0);
+  // const score = sharedInterests.length / totalInterests.length;
+
+  const handlePressIn = (index: number) => {
+    Animated.spring(scales[index], {
+      toValue: 1.3,
+      useNativeDriver: true,
+    }).start();
+  };
+  const handlePressOut = (index: number) => {
+    Animated.spring(scales[index], {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleSwipedLeft = (cardIndex: number) => {
+    opacity.setValue(1);
+    setUserSelection(-1);
+    Animated.timing(opacity, {
+      toValue: 0, // Fade out to 0
+      duration: 300, // Fade duration in ms
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleSwipedDown = (cardIndex: number) => {
+    opacity.setValue(1);
+    setUserSelection(1);
+    Animated.timing(opacity, {
+      toValue: 0, // Fade out to 0
+      duration: 300, // Fade duration in ms
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const handleSwipedRight = (cardIndex: number) => {
+    opacity.setValue(1);
+    setUserSelection(2);
+    Animated.timing(opacity, {
+      toValue: 0, // Fade out to 0
+      duration: 300, // Fade duration in ms
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <PreferenceSearchBar />
+      <Swiper
+        backgroundColor={"none"}
+        infinite={true}
+        cards={users}
+        renderCard={(user) => (
+          <View style={[styles.card]}>
+            <Image source={{ uri: user.image }} style={styles.image} />
+            <Text style={styles.text}>{user.name}</Text>
+            <View style={styles.iconContainer}>
+              {icons.map((icon, index) => (
+                <Pressable
+                  key={icon.id}
+                  onPressIn={() => handlePressIn(index)}
+                  onPressOut={() => handlePressOut(index)}
+                  style={styles.iconWrapper}
+                >
+                  <Animated.View
+                    style={{ transform: [{ scale: scales[index] }] }}
+                  >
+                    <AntDesign name={icon.name} size={40} color={icon.color} />
+                  </Animated.View>
+                </Pressable>
+              ))}
+            </View>
+          </View>
+        )}
+        onSwipedRight={handleSwipedRight}
+        onSwipedLeft={handleSwipedLeft}
+        onSwipedBottom={handleSwipedDown}
+      />
+      {/* Animated NOPE Message */}
+      <Animated.View style={[styles.nopeContainer, { opacity }]}>
+        {selection === -1 && <Text style={styles.nopeText}>NOPE</Text>}
+        {selection === 2 && <Text style={styles.nopeText}>LOVE</Text>}
+        {selection === 1 && <Text style={styles.nopeText}>LIKE</Text>}
+      </Animated.View>
+    </View>
   );
 }
 
+const screenWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1, // Border width
+    borderColor: "blue",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  card: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 300,
+    height: 400,
+    backgroundColor: "white",
+    borderWidth: 1, // Border width
+    borderRadius: 10,
+    marginTop: 200,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  image: { width: 200, height: 200, borderRadius: "100%", marginBottom: 10 },
+  text: { fontSize: 20, marginTop: 10 },
+  iconContainer: {
+    flexDirection: "row",
+    marginTop: 25,
+  },
+  iconWrapper: {
+    marginHorizontal: 25, // Add horizontal space between icons
+  },
+  nopeContainer: {
+    position: "absolute",
+    top: "75%",
+    left: screenWidth * 0.5 - 5,
+    transform: [{ translateX: -50 }, { translateY: -50 }],
+    zIndex: 10,
+  },
+  nopeText: {
+    fontSize: 40,
+    fontWeight: "bold",
+    color: "red",
   },
 });
