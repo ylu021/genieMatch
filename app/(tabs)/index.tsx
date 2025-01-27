@@ -6,9 +6,9 @@ import {
   View,
   useAnimatedValue,
 } from "react-native";
-import { PreferenceSearchBar } from "../Preferences";
-import { SwipeIndicators } from "../SwipeIndicators";
-import { ProfileSwiper } from "../ProfileSwiper";
+import { PreferenceSearchBar } from "../components/Preferences";
+import { ProfileSwiper } from "../components/ProfileSwiper";
+import { SwipeIndicators } from "../components/SwipeIndicators";
 
 export default function HomeScreen() {
   const opacity = useAnimatedValue(0);

@@ -1,18 +1,23 @@
 import React from "react";
 import { useState } from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { Button, StyleSheet, TextInput } from "react-native";
 
 const PreferenceSearchBar = () => {
-  const [text, onChangeText] = useState("Enter a bio to test the matching llm");
+  const [prompt, setPrompt] = useState("Enter a bio to test the matching llm");
+
+  const handleTest = (testId: string) => {
+    setPrompt("");
+  };
 
   return (
     <>
       <TextInput
-        onChangeText={onChangeText}
+        onChangeText={setPrompt}
         multiline={true}
-        value={text}
+        value={prompt}
         style={styles.input}
       />
+      <Button title="Test 1" onPress={() => handleTest("1")} />
     </>
   );
 };

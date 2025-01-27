@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Animated } from "react-native";
 import Swiper from "react-native-deck-swiper";
 import Users from "@/constants/profile.json";
 import Icons from "@/constants/icons";
-import { AppHeaderText, Card, IconWrapper, UserImage } from "../components";
+import { AppHeaderText, Card, IconWrapper, UserImage } from "..";
 
 const ProfileSwiper = ({
   opacity,
