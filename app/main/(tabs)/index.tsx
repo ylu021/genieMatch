@@ -1,30 +1,14 @@
-import React, { useState } from "react";
-import {
-  Text,
-  Animated,
-  StyleSheet,
-  View,
-  useAnimatedValue,
-} from "react-native";
-import { PreferenceSearchBar } from "../components/Preferences";
-import { ProfileSwiper } from "../components/ProfileSwiper";
-import { SwipeIndicators } from "../components/SwipeIndicators";
+import { Animated, StyleSheet, View } from "react-native";
+import React, { useRef, useState } from "react";
+import { PreferenceSearchBar } from "@/components/Preferences";
+import { ProfileSwiper } from "@/components/ProfileSwiper";
+import { SwipeIndicators } from "@/components/SwipeIndicators";
 
-export default function HomeScreen() {
-  const opacity = useAnimatedValue(0);
-  const textOpacity = useAnimatedValue(0);
+export default function Main() {
+  const opacity = useRef(new Animated.Value(0)).current;
   const [selection, setUserSelection] = useState(0);
   const [completed, setCompleted] = useState(false);
   // const score = sharedInterests.length / totalInterests.length;
-  // const animCardOpacity = Animated.timing(opacity, {
-  //   toValue: 0,
-  //   duration: 300,
-  //   useNativeDriver: true,
-  //   onEnd: () => {
-  //     console.log("animCardOpacity finished!");
-  //     setTextVisible(true); // Show the message after card opacity is done
-  //   },
-  // });
 
   const fadeIn = (animatedVal: Animated.Value, duration = 100) =>
     Animated.timing(animatedVal, {

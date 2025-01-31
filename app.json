@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "tinger",
-    "slug": "tinger",
+    "name": "genie-match",
+    "slug": "genie-match",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "genie-match",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {

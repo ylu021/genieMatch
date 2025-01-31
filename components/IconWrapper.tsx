@@ -1,12 +1,5 @@
-import {
-  View,
-  Text,
-  Pressable,
-  Animated,
-  useAnimatedValue,
-  StyleSheet,
-} from "react-native";
-import React, { useRef } from "react";
+import React from "react";
+import { Pressable, Animated, StyleSheet } from "react-native";
 import AntDesign from "react-native-vector-icons/AntDesign";
 
 const IconWrapper = ({
