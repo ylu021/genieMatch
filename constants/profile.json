@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "name": "Alex",
+    "name": "Leslie",
     "age": 28,
     "bio": "Tech enthusiast who loves hiking, photography, and making the perfect cup of coffee.",
     "interests": ["Hiking", "Photography", "Coffee", "Coding"],
-    "image": "https://placecats.com/300/300?image=1",
+    "image": "user1",
     "preferences": {
       "ageRange": [25, 32],
       "sharedInterests": ["Hiking", "Photography", "Cooking"]
@@ -17,7 +17,7 @@
     "age": 30,
     "bio": "Dog lover, traveler, and part-time foodie. Always planning my next adventure!",
     "interests": ["Dogs", "Travel", "Food", "Yoga"],
-    "image": "https://placecats.com/400/300?image=2",
+    "image": "user2",
     "preferences": {
       "ageRange": [28, 35],
       "sharedInterests": ["Dogs", "Travel"]
@@ -25,11 +25,11 @@
   },
   {
     "id": 3,
-    "name": "Jordan",
+    "name": "Cathy",
     "age": 26,
     "bio": "Aspiring musician with a love for books, classic movies, and spontaneous road trips.",
     "interests": ["Music", "Books", "Movies", "Road Trips"],
-    "image": "https://placecats.com/500/300?image=3",
+    "image": "user3",
     "preferences": {
       "ageRange": [28, 35],
       "sharedInterests": ["Music", "Travel"]
@@ -37,11 +37,23 @@
   },
   {
     "id": 4,
-    "name": "Casey",
+    "name": "Kasey",
     "age": 24,
     "bio": "Fitness junkie and plant parent. Always up for a game of basketball or a smoothie date.",
     "interests": ["Fitness", "Plants", "Basketball", "Cooking"],
-    "image": "https://placecats.com/600/300?image=4",
+    "image": "user4",
+    "preferences": {
+      "ageRange": [21, 25],
+      "sharedInterests": ["Fitness", "Sports"]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Rachel",
+    "age": 25,
+    "bio": "Fitness junkie and Dog lover, traveler, and part-time foodie. Always planning my next adventure!",
+    "interests": ["Fitness", "Plants", "Basketball", "Cooking"],
+    "image": "user5",
     "preferences": {
       "ageRange": [21, 25],
       "sharedInterests": ["Fitness", "Sports"]

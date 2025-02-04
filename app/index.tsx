@@ -1,20 +1,21 @@
 import { AppHeaderText } from "@/components";
+import Overlay from "@/components/Overlay";
 import { ThemedText } from "@/components/ThemedText";
 import LandingButton from "@/components/ui/Button";
-import { Link } from "expo-router";
+import { Colors } from "@/constants/Colors";
 import React from "react";
 import { StyleSheet, View, ImageBackground, Pressable } from "react-native";
 
-export default function HomeScreen() {
-  const backgroundImage = require("@/assets/images/onboarding-background.png");
+const backgroundImage = require("@/assets/images/onboarding-background.png");
 
+export default function HomeScreen() {
   return (
     <ImageBackground
       source={backgroundImage}
       resizeMode="cover"
       style={styles.background}
     >
-      <View style={styles.overlay}>{/* <View> */}</View>
+      <Overlay />
       <View style={styles.container}>
         <View style={styles.landingHeader}>
           <AppHeaderText lightColor="white">GenieMatch</AppHeaderText>
@@ -25,7 +26,10 @@ export default function HomeScreen() {
         </View>
         <View style={styles.landingButtonContainer}>
           <LandingButton push href="/main">
-            <ThemedText style={styles.landingButtonText}>
+            <ThemedText
+              style={styles.landingButtonText}
+              darkColor={Colors.dark.darkText}
+            >
               Begin Your Journey
             </ThemedText>
           </LandingButton>
@@ -47,16 +51,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 24,
     borderWidth: 1,
-  },
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.1)", // optional: adds a semi-transparent overlay
-    padding: 20,
-    borderRadius: 10,
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
   },
   container: {
     flex: 1,

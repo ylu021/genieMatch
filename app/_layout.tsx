@@ -40,6 +40,8 @@ import {
   OpenSans_700Bold_Italic,
   OpenSans_800ExtraBold_Italic,
 } from "@expo-google-fonts/open-sans";
+import HeaderTitle from "@/components/HeaderTitle";
+import HeaderRight from "@/components/HeaderRight";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -88,7 +90,16 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="red" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="main"
+          options={{
+            title: "myhome",
+            headerTitle: (props) => {
+              return <HeaderTitle {...props} />;
+            },
+            headerRight: () => <HeaderRight />,
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

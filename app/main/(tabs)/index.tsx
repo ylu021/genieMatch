@@ -1,8 +1,11 @@
-import { Animated, StyleSheet, View } from "react-native";
+import { Animated, ImageBackground, StyleSheet, View } from "react-native";
 import React, { useRef, useState } from "react";
 import { PreferenceSearchBar } from "@/components/Preferences";
 import { ProfileSwiper } from "@/components/ProfileSwiper";
 import { SwipeIndicators } from "@/components/SwipeIndicators";
+import Overlay from "@/components/Overlay";
+
+const backgroundImage = require("@/assets/images/main-background3.png");
 
 export default function Main() {
   const opacity = useRef(new Animated.Value(0)).current;
@@ -36,27 +39,37 @@ export default function Main() {
   };
 
   return (
-    <View style={styles.container}>
-      <PreferenceSearchBar />
-      <ProfileSwiper
-        opacity={opacity}
-        setUserSelection={setUserSelection}
-        handleSwiped={handleSwiped}
-      />
-      <SwipeIndicators
-        opacity={opacity}
-        selection={selection}
-        completed={completed}
-      />
-    </View>
+    <ImageBackground
+      // source={backgroundImage}
+      resizeMode="cover"
+      style={styles.background}
+    >
+      <Overlay darkerOverlay />
+      <View style={styles.container}>
+        {/* <PreferenceSearchBar /> */}
+        <ProfileSwiper
+          // opacity={opacity}
+          setUserSelection={setUserSelection}
+          handleSwiped={handleSwiped}
+        />
+        <SwipeIndicators
+          opacity={opacity}
+          selection={selection}
+          completed={completed}
+        />
+      </View>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: "black",
+  },
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white",
   },
 });

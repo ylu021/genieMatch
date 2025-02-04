@@ -1,15 +1,17 @@
 import React from "react";
 import { Pressable, Animated, StyleSheet } from "react-native";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import { AntDesign } from "@expo/vector-icons";
 
 const IconWrapper = ({
   icon,
   scale,
   index,
+  updateSwipe,
 }: {
   icon: { name: string; color: string };
   scale: Animated.Value;
   index: number;
+  updateSwipe: Function;
 }) => {
   const handlePressIn = (index: number) => {
     Animated.spring(scale, {
@@ -21,7 +23,11 @@ const IconWrapper = ({
     Animated.spring(scale, {
       toValue: 1,
       useNativeDriver: true,
-    }).start();
+    }).start(({ finished }) => {
+      if (finished) {
+        updateSwipe(index);
+      }
+    });
   };
   return (
     <Pressable

@@ -11,11 +11,12 @@ export type ThemedTextProps = TextProps & {
 export function ThemedText({
   style,
   lightColor,
-  darkColor = "white",
+  darkColor,
   type = "default",
   ...rest
 }: ThemedTextProps) {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
+  console.log(color);
 
   return (
     <Text
@@ -35,7 +36,7 @@ export function ThemedText({
 
 const styles = StyleSheet.create({
   default: {
-    fontSize: 16,
+    fontSize: 12,
     lineHeight: 24,
   },
   defaultSemiBold: {
