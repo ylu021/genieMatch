@@ -3,8 +3,10 @@ import InterestSections from "@/components/Preferences/InterestSections";
 import { ThemedText } from "@/components/ThemedText";
 import { PreferenceForm } from "@/types/preferenceForm";
 import { useRouter } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import FormFormatter from "@/utils/formFormatter";
 
 const Preferences = () => {
   const router = useRouter();
@@ -22,6 +24,26 @@ const Preferences = () => {
       "Books",
     ]),
   });
+
+  useEffect(() => {
+    // load default from asyncstorage
+    const loadUserPreferences = async () => {
+      const savedPreferences = await AsyncStorage.getItem("userPreferences");
+      if (savedPreferences) {
+        setFormState(FormFormatter.parse(savedPreferences));
+      }
+    };
+
+    loadUserPreferences();
+  }, []);
+
+  const handleUpdatePreferences = async () => {
+    await AsyncStorage.setItem(
+      "userPreferences",
+      FormFormatter.stringify(formState)
+    );
+    router.push("/main"); // close modal
+  };
 
   const updateForm = (key: string, content: PreferenceForm["gender"]) => {
     if (key === "gender") {
@@ -64,7 +86,7 @@ const Preferences = () => {
           <Pressable onPress={() => router.push("/main")}>
             <ThemedText>Cancel</ThemedText>
           </Pressable>
-          <Pressable onPress={() => router.push("/main")}>
+          <Pressable onPress={() => handleUpdatePreferences()}>
             <ThemedText>Updated</ThemedText>
           </Pressable>
         </View>
