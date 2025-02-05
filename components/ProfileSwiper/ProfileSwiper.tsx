@@ -23,19 +23,6 @@ const ProfileSwiper = ({
   handleSwiped: Function;
 }) => {
   const swiperRef = useRef(null);
-  const getProfileImage = (imageName: string) => {
-    const images: {
-      [key: string]: any;
-    } = {
-      user1: require("@/assets/images/profiles/user1.png"),
-      user2: require("@/assets/images/profiles/user2.png"),
-      user3: require("@/assets/images/profiles/user3.png"),
-      user4: require("@/assets/images/profiles/user4.png"),
-      user5: require("@/assets/images/profiles/user5.png"),
-    };
-
-    return images[imageName] || images["user1"]; // 默认返回 user1
-  };
   const scales = useRef(Icons.map(() => new Animated.Value(1))).current; // Create unique scales for each icon
 
   const handleSwipedLeft = (cardIndex: number) => {
@@ -72,25 +59,7 @@ const ProfileSwiper = ({
         renderCard={(user) => {
           return (
             <View style={styles.cardContainer}>
-              <Card>
-                <ImageBackground
-                  source={getProfileImage(user.image)}
-                  resizeMode="cover"
-                  style={styles.cardImage}
-                >
-                  <Overlay type="white" />
-                  <LinearGradient
-                    colors={["transparent", "rgba(0, 0, 0, 0.7)"]} // Transparent at top, dark at bottom
-                    style={styles.gradient}
-                  />
-                  <View style={styles.cardDescription}>
-                    <ProfileNameText lightColor="white">
-                      {user.name}
-                    </ProfileNameText>
-                    <ThemedText lightColor="white">{user.bio}</ThemedText>
-                  </View>
-                </ImageBackground>
-              </Card>
+              <Card user={user} />
               <View style={styles.iconContainer}>
                 {Icons.map((icon, index) => (
                   <IconWrapper
@@ -131,24 +100,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 20,
     justifyContent: "center",
-  },
-  gradient: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: "30%", // Adjust gradient height
-  },
-  cardImage: {
-    flex: 1,
-    // width: 300,
-    // height: 400,
-    position: "relative",
-  },
-  cardDescription: {
-    position: "absolute",
-    bottom: 0,
-    padding: 16,
   },
 });
 

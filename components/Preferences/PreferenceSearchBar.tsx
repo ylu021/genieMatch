@@ -12,7 +12,6 @@ import AppHeaderText from "../ui/AppHeaderText";
 import { BioView } from "../BioView";
 
 async function fetchResponse(prompt: string) {
-  console.log(prompt);
   return fetch("http://localhost:8000/api/message/", {
     method: "POST",
     headers: {
@@ -34,7 +33,6 @@ const PreferenceSearchBar = () => {
     setLoading(true);
     const response = await fetchResponse(value);
     setData(JSON.parse(response?.content ?? {}));
-    console.log(data);
     setLoading(false);
   };
   return (
