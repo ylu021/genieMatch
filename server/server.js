@@ -16,7 +16,14 @@ const redis = new Redis(process.env.REDIS_URL);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors()); // Enable CORS
+const corsOptions = {
+  origin: 'http://localhost:8081',  // Allow requests from your Expo app's URL
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all HTTP methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Add any headers you expect in the request
+  credentials: true, // Allow credentials (cookies, authorization headers)
+};
+
+app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json()); // Enable JSON parsing
 
 // Test Route
@@ -85,6 +92,9 @@ app.post("/api/message", async (req, res, next) => {
     next(e); // Pass error to middleware
   }
 });
+
+// Handle OPTIONS request (preflight)
+app.options('*', cors(corsOptions));  // Automatically respond to preflight requests
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

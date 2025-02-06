@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node start-server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +17,8 @@
     "express": "^4.21.2",
     "ioredis": "^5.4.2",
     "openai": "^4.80.1"
+  },
+  "devDependencies": {
+    "ngrok": "^5.0.0-beta.2"
   }
 }
