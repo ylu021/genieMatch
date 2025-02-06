@@ -16,7 +16,7 @@ const HeaderRight = () => {
   const router = useRouter();
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => router.push("/")}>
+      <Pressable onPress={() => router.push("/bio" as RelativePathString)}>
         <FontAwesome name="magic" size={28} color={Colors.dark.greyColor} />
       </Pressable>
       <Pressable

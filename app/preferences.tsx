@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FormFormatter from "@/utils/formFormatter";
+import modalStyles from "@/styles/modals";
 
 const Preferences = () => {
   const router = useRouter();
@@ -63,26 +64,26 @@ const Preferences = () => {
     }
   };
   return (
-    <View style={styles.modalContainer}>
+    <View style={modalStyles.modalContainer}>
       <ScrollView>
-        <ThemedText darkColor="white">
+        {/* <ThemedText darkColor="white">
           {JSON.stringify(formState, (_key, value) =>
             value instanceof Set ? [...value] : value
           )}
-        </ThemedText>
-        <View style={styles.section}>
+        </ThemedText> */}
+        <View style={modalStyles.section}>
           <GenderSections
             selectedGenders={formState.gender}
             updateForm={updateForm}
           />
         </View>
-        <View style={styles.section}>
+        <View style={modalStyles.section}>
           <InterestSections
             selectedInterests={formState.interests}
             updateForm={updateForm}
           />
         </View>
-        <View style={[styles.section, styles.list]}>
+        <View style={[modalStyles.section, styles.list]}>
           <Pressable onPress={() => router.push("/main")}>
             <ThemedText>Cancel</ThemedText>
           </Pressable>
@@ -96,14 +97,6 @@ const Preferences = () => {
 };
 
 const styles = StyleSheet.create({
-  modalContainer: {
-    flex: 1,
-    backgroundColor: "black",
-    paddingHorizontal: 16,
-  },
-  section: {
-    marginVertical: 16,
-  },
   list: {
     flexDirection: "row",
     justifyContent: "space-between",

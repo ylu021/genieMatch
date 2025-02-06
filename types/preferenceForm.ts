@@ -5,3 +5,10 @@ export interface PreferenceForm {
   };
   interests: Set<string>;
 }
+
+type OrientationType = "Bisexual" | "Homosexual" | "Heterosexual";
+
+export interface PreferenceParsed {
+  sexualOrientation: OrientationType;
+  interestsString: string;
+}

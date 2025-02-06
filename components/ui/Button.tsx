@@ -1,19 +1,41 @@
 import { Href, Link } from "expo-router";
 import React from "react";
-import { Text, Pressable, StyleSheet } from "react-native";
+import {
+  Text,
+  Pressable,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  GestureResponderEvent,
+} from "react-native";
 import GradientButton from "./GradientButton";
 
 const Button = ({
   href,
   type = "primary",
   children,
+  style,
+  onPress,
   ...props
 }: {
-  href: Href;
+  href?: Href;
   type?: "primary" | "secondary";
   children: React.ReactNode;
   push?: boolean;
+  style?: StyleProp<ViewStyle>;
+  onPress: (event: GestureResponderEvent) => void;
 }) => {
+  if (!href) {
+    return (
+      <Pressable
+        style={[styles.button, styles.buttonPrimary, style]}
+        onPress={onPress}
+        {...props}
+      >
+        {children}
+      </Pressable>
+    );
+  }
   if (type === "secondary") {
     return (
       <Link href={href} asChild>
