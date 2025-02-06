@@ -65,7 +65,7 @@ const Preferences = () => {
   };
   return (
     <View style={modalStyles.modalContainer}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         {/* <ThemedText darkColor="white">
           {JSON.stringify(formState, (_key, value) =>
             value instanceof Set ? [...value] : value
@@ -97,6 +97,9 @@ const Preferences = () => {
 };
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    paddingHorizontal: 16,
+  },
   list: {
     flexDirection: "row",
     justifyContent: "space-between",
