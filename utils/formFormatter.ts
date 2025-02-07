@@ -1,3 +1,4 @@
+import { BioFormType } from "@/types/bioForm";
 import { PreferenceForm } from "@/types/preferenceForm";
 
 const stringify = (formData: Partial<PreferenceForm>) =>
@@ -11,7 +12,12 @@ const parse = (stringObject: string) =>
     Array.isArray(value) ? new Set(value) : value
   );
 
+const validateBioForm = (form: BioFormType) => {
+  return Object.values(form).filter((v) => !v.trim()).length === 0; // filter only the empty ones
+};
+
 export default {
   stringify,
   parse,
+  validateBioForm,
 };

@@ -47,21 +47,12 @@ const Preferences = () => {
   };
 
   const updateForm = (key: string, content: PreferenceForm["gender"]) => {
-    if (key === "gender") {
-      setFormState((prev) => {
-        return {
-          ...prev,
-          gender: content,
-        };
-      });
-    } else if (key === "interests") {
-      setFormState((prev) => {
-        return {
-          ...prev,
-          interests: content,
-        };
-      });
-    }
+    setFormState((prev) => {
+      return {
+        ...prev,
+        [key]: content,
+      };
+    });
   };
   return (
     <View style={modalStyles.modalContainer}>
