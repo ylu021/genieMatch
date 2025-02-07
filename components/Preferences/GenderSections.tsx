@@ -9,12 +9,12 @@ import { ThemedText } from "../ThemedText";
 const pillColor = "rgba(254,32,66,0.75)";
 const pillColorSelected = "rgba(254,32,66,1)";
 
-interface genderOptionsProps {
+interface GenderOptionsProps {
   label: "Male" | "Female";
   key: Gender;
 }
 
-const genderOptions: genderOptionsProps[] = [
+const genderOptions: GenderOptionsProps[] = [
   { label: "Male", key: "male" },
   { label: "Female", key: "female" },
 ];

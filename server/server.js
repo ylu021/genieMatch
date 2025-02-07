@@ -17,9 +17,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOptions = {
-  origin: 'http://localhost:8081',  // Allow requests from your Expo app's URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Add any headers you expect in the request
+  origin: "http://localhost:8081",  // Allow requests from your Expo app"s URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"], // Add any headers you expect in the request
   credentials: true, // Allow credentials (cookies, authorization headers)
 };
 
@@ -31,7 +31,10 @@ app.get("/", (req, res) => {
   res.send("Node.js Server is Running 🚀");
 });
 
-async function getCachedResponse(prompt) {
+async function getCachedResponse(prompt, skipCache=false) {
+  if(skipCache) {
+    return null;
+  }
   const cacheKey = `openai:${prompt}`;
   const cachedResponse = await redis.get(cacheKey);
   if (cachedResponse) {
@@ -72,18 +75,23 @@ app.post("/api/message", async (req, res, next) => {
       .json({ error: "Content-Type must be application/json" });
   }
   const { prompt } = req.body; // how do i ensure the prompt is json
+  const cacheControl = req.headers['cache-control']
 
   if (!prompt) {
     return res.status(400).json({ error: "prompt is required" });
   }
 
+  const skipCache = cacheControl && cacheControl.includes('no-cache');
+
   try {
-    const cachedResponse = await getCachedResponse(prompt);
+    const cachedResponse = await getCachedResponse(prompt, skipCache);
     
     if (!cachedResponse) {
       const response = await openAI(prompt);
       const cacheKey = `openai:${prompt}`;
-      await redis.set(cacheKey, JSON.stringify(response));
+      if(!skipCache) {
+        await redis.set(cacheKey, JSON.stringify(response));
+      }
       return res.json(response);
     }else {
       return res.json(cachedResponse)
@@ -94,7 +102,7 @@ app.post("/api/message", async (req, res, next) => {
 });
 
 // Handle OPTIONS request (preflight)
-app.options('*', cors(corsOptions));  // Automatically respond to preflight requests
+app.options("*", cors(corsOptions));  // Automatically respond to preflight requests
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

@@ -8,23 +8,13 @@ import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FormFormatter from "@/utils/formFormatter";
 import modalStyles from "@/styles/modals";
+import PersonalitySections from "@/components/Preferences/PersonalitySections";
+import DefaultPreferences from "@/constants/defaultPreferences";
 
 const Preferences = () => {
   const router = useRouter();
-  const [formState, setFormState] = useState<PreferenceForm>({
-    gender: {
-      male: true,
-      female: false,
-    },
-    interests: new Set([
-      "Exercising",
-      "Swimming",
-      "Gym",
-      "Cooking",
-      "Movies",
-      "Books",
-    ]),
-  });
+  const [formState, setFormState] =
+    useState<PreferenceForm>(DefaultPreferences);
 
   useEffect(() => {
     // load default from asyncstorage
@@ -69,6 +59,12 @@ const Preferences = () => {
           />
         </View>
         <View style={modalStyles.section}>
+          <PersonalitySections
+            selectedPersonalities={formState.personality}
+            updateForm={updateForm}
+          />
+        </View>
+        <View style={modalStyles.section}>
           <InterestSections
             selectedInterests={formState.interests}
             updateForm={updateForm}
@@ -95,6 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 16,
+    marginBottom: 32,
   },
 });
 

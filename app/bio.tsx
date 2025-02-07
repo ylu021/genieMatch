@@ -13,7 +13,7 @@ const Bio = () => {
     interestSeeking: null,
   });
 
-  // const [showAiSave, setAiSave] = useState(false); // in edit mode
+  const [showAIMessage, setShowAIMessage] = useState(false);
 
   useEffect(() => {
     const loadBio = async () => {
@@ -30,6 +30,8 @@ const Bio = () => {
             bio,
             interestSeeking,
           }));
+
+          setShowAIMessage(true);
 
           await AsyncStorage.setItem(
             "userBio",
@@ -49,35 +51,14 @@ const Bio = () => {
     loadBio();
   }, []);
 
-  const generateBio = async () => {
-    // setEditMode(true);
-    // work on later
-  };
-
-  // const updateUnsavedBio = (type: string, value: string | undefined) => {
-  //   console.log(74, "updated", unsavedForm);
-  //   setUnsavedForm((prev) => {
-  //     return {
-  //       ...prev,
-  //       [type]: value,
-  //     };
-  //   });
-  // };
-
-  // const cancel = () => {
-  //   // restore unsavedForm
-  //   setUnsavedForm();
-  // };
-
   const updateUserBio = async (formValue: BioFormType) => {
-    // validate input
-    console.log("updateUserBio", JSON.stringify(formValue));
     // same time update view
     setUserBio((prev) => ({
       ...prev,
       ...formValue,
     }));
     await AsyncStorage.setItem("userBio", JSON.stringify(formValue));
+    setShowAIMessage(false);
   };
 
   return (
@@ -86,7 +67,7 @@ const Bio = () => {
         <BioFullForm
           updateUserBio={updateUserBio}
           userBio={userBio}
-          // editMode={editMode}
+          showAIMessage={showAIMessage}
         />
       </ScrollView>
     </View>

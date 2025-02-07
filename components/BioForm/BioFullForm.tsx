@@ -11,15 +11,19 @@ import BioEditActionButtons from "./BioEditActionButtons";
 import BioEditIcon from "./BioEditIcon";
 import BioForm from "./BioForm";
 import { ThemedText } from "@/components/ThemedText";
-import formFormatter from "@/utils/formFormatter";
+import FormFormatter from "@/utils/formFormatter";
+import { fetchResponse } from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import DefaultPreferences from "@/constants/defaultPreferences";
 
 const BioFullForm = ({
   userBio,
   updateUserBio,
+  showAIMessage,
 }: {
   userBio: BioFormType;
   updateUserBio: (form: BioFormType) => void;
+  showAIMessage: boolean;
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [formValue, setFormValue] = useState(userBio);
@@ -42,9 +46,30 @@ const BioFullForm = ({
     });
   };
 
+  const generateBio = async () => {
+    setEditMode(true);
+    const userPreferences = await AsyncStorage.getItem("userPreferences");
+    const preferences = userPreferences
+      ? FormFormatter.parse(userPreferences)
+      : DefaultPreferences;
+    const promptFormatted = FormFormatter.generatePrompt(preferences);
+    const response = await fetchResponse(promptFormatted, {
+      "Cache-Control": "no-cache",
+    });
+    const data = response?.content ? JSON.parse(response?.content) : "";
+
+    if (data) {
+      const { Bio: bio, Interest: interestSeeking } = data;
+      setFormValue({
+        bio,
+        interestSeeking,
+      });
+    }
+  };
+
   const submitForm = () => {
     // // check formInput, emptyness already checked but still keep this function
-    if (formFormatter.validateBioForm(formValue)) {
+    if (FormFormatter.validateBioForm(formValue)) {
       updateUserBio(formValue);
       setEditMode(false);
     }
@@ -54,6 +79,11 @@ const BioFullForm = ({
       {/* Bio */}
       <View style={modalStyles.section}>
         <ThemedText type="subtitle">Your Bio</ThemedText>
+        {showAIMessage && (
+          <ThemedText>
+            This is an example, click on AI Writer to try out your own profile!
+          </ThemedText>
+        )}
       </View>
       <View style={styles.bioContainer}>
         <BioForm
@@ -82,7 +112,7 @@ const BioFullForm = ({
         {!editMode ? <BioEditIcon setEditMode={setEditMode} /> : null}
       </LinearGradient>
       <View style={[modalStyles.section]}>
-        <Button style={styles.aiButton} onPress={() => {}}>
+        <Button style={styles.aiButton} onPress={generateBio}>
           <FontAwesome name="magic" size={22} color={Colors.dark.text} />
           <ThemedText style={styles.aiButtonText} darkColor={Colors.dark.text}>
             AI writer
@@ -90,7 +120,7 @@ const BioFullForm = ({
         </Button>
         {editMode && (
           <BioEditActionButtons
-            disabled={!formFormatter.validateBioForm(formValue)}
+            disabled={!FormFormatter.validateBioForm(formValue)}
             cancel={cancel}
             submit={submitForm}
           />

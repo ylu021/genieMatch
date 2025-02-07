@@ -1,0 +1,3 @@
+{
+  "prompt": "User\nAge: {{age}}\nSexual Orientation: {{sexualOrientation}}\nInterests: {{interestsString}}\nPersonality Traits: {{personalityString}}"
+}

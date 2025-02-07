@@ -12,7 +12,8 @@ export type ThemedTextProps = TextProps & {
     | "subtitle"
     | "link"
     | "largeText"
-    | "warning";
+    | "warning"
+    | "sliderText";
 };
 
 export function ThemedText({
@@ -49,6 +50,11 @@ const styles = StyleSheet.create({
   },
   defaultSemiBold: {
     fontSize: 16,
+    lineHeight: 24,
+    fontWeight: "600",
+  },
+  sliderText: {
+    fontSize: 14,
     lineHeight: 24,
     fontWeight: "600",
   },
