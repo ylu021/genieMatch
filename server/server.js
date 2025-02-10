@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import OpenAI from "openai";
 import Redis from "ioredis";
-import systemPrompt from "../systemPrompt.json" with { type: "json" };
+import systemPrompt from "./systemPrompt.json" with { type: "json" };
 
 dotenv.config();
 
