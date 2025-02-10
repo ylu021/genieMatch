@@ -14,6 +14,8 @@ const Bio = () => {
   });
 
   const [showAIMessage, setShowAIMessage] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setErrorMessage] = useState("");
 
   useEffect(() => {
     const loadBio = async () => {
@@ -22,6 +24,7 @@ const Bio = () => {
         // fetch default bio
         const value = Prompts.prompts[0].content;
         setLoading(true);
+        setErrorMessage(value);
         const response = await fetchResponse(value);
         setLoading(false);
         const data = response?.content;
@@ -66,6 +69,7 @@ const Bio = () => {
   return (
     <View style={modalStyles.modalContainer}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
+        {message && <ThemedText>{message}</ThemedText>}
         <BioFullForm
           updateUserBio={updateUserBio}
           userBio={userBio}
