@@ -8,15 +8,21 @@ const BioForm = ({
   updateFormChange,
   type,
   editMode,
+  loading,
 }: {
   formValue: string | undefined;
   updateFormChange: Function;
   type: BioFormCategory;
   editMode: Boolean;
+  loading: Boolean;
 }) => {
   const handleChange = (text: string) => {
     updateFormChange(type, text);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <View pointerEvents={!editMode ? "none" : "auto"} style={styles.container}>

@@ -15,15 +15,18 @@ import FormFormatter from "@/utils/formFormatter";
 import { fetchResponse } from "@/api/api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import DefaultPreferences from "@/constants/defaultPreferences";
+import Loading from "../ui/Loading";
 
 const BioFullForm = ({
   userBio,
   updateUserBio,
   showAIMessage,
+  loading,
 }: {
   userBio: BioFormType;
   updateUserBio: (form: BioFormType) => void;
   showAIMessage: boolean;
+  loading: boolean;
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [formValue, setFormValue] = useState(userBio);
@@ -91,6 +94,7 @@ const BioFullForm = ({
           formValue={formValue.bio ?? ""}
           updateFormChange={updateFormChange}
           editMode={editMode}
+          loading={loading}
         />
         {!editMode ? <BioEditIcon setEditMode={setEditMode} /> : null}
       </View>
@@ -108,6 +112,7 @@ const BioFullForm = ({
           formValue={formValue.interestSeeking ?? ""}
           updateFormChange={updateFormChange}
           editMode={editMode}
+          loading={loading}
         />
         {!editMode ? <BioEditIcon setEditMode={setEditMode} /> : null}
       </LinearGradient>

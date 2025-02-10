@@ -21,7 +21,9 @@ const Bio = () => {
       if (!savedBio) {
         // fetch default bio
         const value = Prompts.prompts[0].content;
+        setLoading(true);
         const response = await fetchResponse(value);
+        setLoading(false);
         const data = response?.content;
         if (data) {
           const { Bio: bio, interest: interestSeeking } = JSON.parse(data);
@@ -68,6 +70,7 @@ const Bio = () => {
           updateUserBio={updateUserBio}
           userBio={userBio}
           showAIMessage={showAIMessage}
+          loading={loading}
         />
       </ScrollView>
     </View>
