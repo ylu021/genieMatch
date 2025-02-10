@@ -1,5 +1,6 @@
 import { fetchResponse } from "@/api/api";
 import { BioFullForm } from "@/components/BioForm";
+import { ThemedText } from "@/components/ThemedText";
 import Prompts from "@/constants/prompts.json";
 import modalStyles from "@/styles/modals";
 import { BioFormType } from "@/types/bioForm";
@@ -69,7 +70,14 @@ const Bio = () => {
   return (
     <View style={modalStyles.modalContainer}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        {message && <ThemedText>{message}</ThemedText>}
+        {message && (
+          <ThemedText darkColor="white" lightColor="white">
+            {message}
+            <ThemedText darkColor="white" lightColor="white">
+              {process.env.EXPO_PUBLIC_API_URL}
+            </ThemedText>
+          </ThemedText>
+        )}
         <BioFullForm
           updateUserBio={updateUserBio}
           userBio={userBio}
