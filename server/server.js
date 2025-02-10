@@ -16,19 +16,17 @@ const redis = new Redis(process.env.REDIS_URL);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// const corsOptions = {
-//   // origin:
-//   //   process.env.NODE_ENV === "production"
-//   //     ? /https:\/\/snack\.expo\.dev/ // Allow all Snack URLs
-//   //     : "http://localhost:8081", // Use localhost for local development,  // Allow requests from your Expo app"s URL
-//   origin: "*",
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all HTTP methods
-//   allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"], // Add any headers you expect in the request
-//   credentials: true, // Allow credentials (cookies, authorization headers)
-// };
+const corsOptions = {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"], // Add any headers you expect in the request
+  credentials: true, // Allow credentials (cookies, authorization headers)
+};
 
-app.use(cors()); // Enable CORS
+app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json()); // Enable JSON parsing
+app.options('*', cors(corsOptions));  // This allows preflight requests
+
 
 // Test Route
 app.get("/", (req, res) => {
