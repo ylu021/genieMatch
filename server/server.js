@@ -16,16 +16,11 @@ const redis = new Redis(process.env.REDIS_URL);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: "*",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow all HTTP methods
-  allowedHeaders: ["Content-Type", "Authorization", "Cache-Control"], // Add any headers you expect in the request
-  credentials: true, // Allow credentials (cookies, authorization headers)
-};
+app.use(cors()); // Enable CORS
+// Handle OPTIONS request (preflight)
+app.options("*", cors()); // Automatically respond to preflight requests
 
-app.use(cors(corsOptions)); // Enable CORS
 app.use(express.json()); // Enable JSON parsing
-app.options('*', cors(corsOptions));  // This allows preflight requests
 
 
 // Test Route
@@ -102,9 +97,6 @@ app.post("/api/message", async (req, res, next) => {
     next(e); // Pass error to middleware
   }
 });
-
-// Handle OPTIONS request (preflight)
-app.options("*", cors(corsOptions));  // Automatically respond to preflight requests
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
