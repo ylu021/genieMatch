@@ -28,8 +28,8 @@ app.get("/", (req, res) => {
   res.send("Node.js Server is Running 🚀");
 });
 
-async function getCachedResponse(prompt, skipCache=false) {
-  if(skipCache) {
+async function getCachedResponse(prompt, skipCache = false) {
+  if (skipCache) {
     return null;
   }
   const cacheKey = `openai:${prompt}`;
@@ -72,26 +72,26 @@ app.post("/api/message", async (req, res, next) => {
       .json({ error: "Content-Type must be application/json" });
   }
   const { prompt } = req.body; // how do i ensure the prompt is json
-  const cacheControl = req.headers['cache-control']
+  const cacheControl = req.headers["cache-control"];
 
   if (!prompt) {
     return res.status(400).json({ error: "prompt is required" });
   }
 
-  const skipCache = cacheControl && cacheControl.includes('no-cache');
+  const skipCache = cacheControl && cacheControl.includes("no-cache");
 
   try {
     const cachedResponse = await getCachedResponse(prompt, skipCache);
-    
+
     if (!cachedResponse) {
       const response = await openAI(prompt);
       const cacheKey = `openai:${prompt}`;
-      if(!skipCache) {
+      if (!skipCache) {
         await redis.set(cacheKey, JSON.stringify(response));
       }
       return res.json(response);
-    }else {
-      return res.json(cachedResponse)
+    } else {
+      return res.json(cachedResponse);
     }
   } catch (e) {
     next(e); // Pass error to middleware

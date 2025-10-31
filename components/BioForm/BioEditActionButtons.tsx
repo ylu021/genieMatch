@@ -33,7 +33,11 @@ const BioEditActionButtons = ({
         style={[modalStyles.section, styles.button, styles.grayButton]}
         onPress={cancel}
       >
-        <ThemedText style={styles.buttonText} darkColor={Colors.dark.text}>
+        <ThemedText
+          style={styles.buttonText}
+          lightColor={Colors.dark.text}
+          darkColor={Colors.dark.text}
+        >
           Cancel
         </ThemedText>
       </Button>

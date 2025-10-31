@@ -2,6 +2,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import { BioFormCategory, BioFormType } from "@/types/bioForm";
 import { ThemedText } from "../ThemedText";
+import Loading from "../ui/Loading";
 
 const BioForm = ({
   formValue = "",
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     fontWeight: "600",
-    // paddingHorizontal: 16,
     paddingBottom: 20,
   },
 });

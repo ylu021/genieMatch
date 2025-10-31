@@ -1,0 +1,50 @@
+/* Google Fonts - Source Sans Pro and Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+@source "./**/*.{js,ts,jsx,tsx,html}";
+@import "tailwindcss";
+
+@layer base {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+}
+
+@layer components {
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+
+:root {
+	color-scheme: light dark;
+	--background-color: #ffffff;
+	--text-color: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #121212; /* Dark background */
+		--text-color: #fafafa; /* Light text */
+	}
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+	font-family: "Open Sans", system-ui, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}

@@ -10,11 +10,14 @@ import FormFormatter from "@/utils/formFormatter";
 import modalStyles from "@/styles/modals";
 import PersonalitySections from "@/components/Preferences/PersonalitySections";
 import DefaultPreferences from "@/constants/defaultPreferences";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Preferences = () => {
   const router = useRouter();
   const [formState, setFormState] =
     useState<PreferenceForm>(DefaultPreferences);
+
+  const { bottom } = useSafeAreaInsets();
 
   useEffect(() => {
     // load default from asyncstorage
@@ -45,7 +48,7 @@ const Preferences = () => {
     });
   };
   return (
-    <View style={modalStyles.modalContainer}>
+    <View style={[{ paddingBottom: bottom }, modalStyles.modalContainer]}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         {/* <ThemedText darkColor="white">
           {JSON.stringify(formState, (_key, value) =>
@@ -72,10 +75,10 @@ const Preferences = () => {
         </View>
         <View style={[modalStyles.section, styles.list]}>
           <Pressable onPress={() => router.push("/main")}>
-            <ThemedText>Cancel</ThemedText>
+            <ThemedText lightColor="white">Cancel</ThemedText>
           </Pressable>
           <Pressable onPress={() => handleUpdatePreferences()}>
-            <ThemedText>Updated</ThemedText>
+            <ThemedText lightColor="white">Updated</ThemedText>
           </Pressable>
         </View>
       </ScrollView>

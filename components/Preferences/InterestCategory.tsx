@@ -16,7 +16,7 @@ const InterestCategory = ({
 }) => {
   return (
     <View style={styles.container}>
-      <ThemedText style={styles.category}>
+      <ThemedText style={styles.category} lightColor="white">
         {Interests[category].title}
       </ThemedText>
       <View style={styles.interestList}>

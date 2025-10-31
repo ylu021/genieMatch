@@ -6,10 +6,15 @@
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "genie-match",
+    "jsEngine": "hermes",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ylu021.geniematch",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -36,6 +41,20 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6207e41d-a67f-4ddd-99a5-a64291f96b66"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6207e41d-a67f-4ddd-99a5-a64291f96b66"
     }
   }
 }

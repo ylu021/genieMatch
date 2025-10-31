@@ -26,8 +26,16 @@ const CustomSlider = ({
         onValueChange={updateSliderValue}
       />
       <View style={styles.sliderContainer}>
-        {minLabel && <ThemedText type="sliderText">{minLabel}</ThemedText>}
-        {maxLabel && <ThemedText type="sliderText">{maxLabel}</ThemedText>}
+        {minLabel && (
+          <ThemedText lightColor="white" type="sliderText">
+            {minLabel}
+          </ThemedText>
+        )}
+        {maxLabel && (
+          <ThemedText lightColor="white" type="sliderText">
+            {maxLabel}
+          </ThemedText>
+        )}
       </View>
     </View>
   );

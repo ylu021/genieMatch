@@ -18,7 +18,9 @@ export default function HomeScreen() {
       <Overlay />
       <View style={styles.container}>
         <View style={styles.landingHeader}>
-          <AppHeaderText lightColor="white">GenieMatch</AppHeaderText>
+          <AppHeaderText lightColor="white" darkColor="white">
+            GenieMatch
+          </AppHeaderText>
           <ThemedText style={styles.landingText}>
             Tired of swiping? Find your soulmate with GenieMatch—only hearts
             that rhyme in harmony.{" "}

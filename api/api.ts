@@ -9,7 +9,6 @@ export const fetchResponse = async (prompt: string, headers = {}) => {
     method: "POST",
     headers: { ...APIHeaders, ...headers },
     body: JSON.stringify({ prompt }),
-  })
-    .then((res) => res.json())
-    .catch((e) => console.error(e));
+  }).then((res) => res.json());
+  // .catch((e) => console.error(e));
 };

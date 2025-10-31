@@ -21,12 +21,16 @@ const Bio = () => {
   useEffect(() => {
     const loadBio = async () => {
       const savedBio = await AsyncStorage.getItem("userBio");
+      // await AsyncStorage.removeItem("userBio");
       if (!savedBio) {
         // fetch default bio
         const value = Prompts.prompts[0].content;
         setLoading(true);
-        setErrorMessage(value);
-        const response = await fetchResponse(value);
+        const response = await fetchResponse(value).catch((error) => {
+          console.error("API Error:", error);
+          setErrorMessage(error.message); // Set the error message
+          setLoading(false);
+        });
         setLoading(false);
         const data = response?.content;
         if (data) {

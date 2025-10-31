@@ -1,0 +1,114 @@
+{
+  "fitness_sports": {
+    "key": "fitness_sports",
+    "title": "Fitness & Sports",
+    "bgmColor": "#FF5733",
+    "items": [
+      "Exercising",
+      "Gym",
+      "Swimming",
+      "Running",
+      "Hiking",
+      "Cycling",
+      "Yoga",
+      "Pilates",
+      "CrossFit",
+      "Rock Climbing"
+    ]
+  },
+  "entertainment_pop_culture": {
+    "key": "entertainment_pop_culture",
+    "title": "Entertainment & Pop Culture",
+    "bgmColor": "#9B59B6",
+    "items": [
+      "Movies",
+      "TV Shows",
+      "Anime",
+      "K-Pop",
+      "Stand-up Comedy",
+      "Podcasts",
+      "Video Games",
+      "Theater & Musicals",
+      "Live Concerts"
+    ]
+  },
+  "intellectual_hobbies": {
+    "key": "intellectual_hobbies",
+    "title": "Intellectual & Hobbies",
+    "bgmColor": "#3498DB",
+    "items": [
+      "Books",
+      "Writing",
+      "Poetry",
+      "Photography",
+      "Chess",
+      "Coding",
+      "Learning Languages",
+      "Space & Astronomy"
+    ]
+  },
+  "food_drinks": {
+    "key": "food_drinks",
+    "title": "Food & Drinks",
+    "bgmColor": "#E67E22",
+    "items": [
+      "Cooking",
+      "Baking",
+      "Coffee Lover",
+      "Wine Tasting",
+      "Vegan Lifestyle",
+      "Sushi Lover",
+      "Foodie"
+    ]
+  },
+  "travel_adventures": {
+    "key": "travel_adventures",
+    "title": "Travel & Adventures",
+    "bgmColor": "#16A085",
+    "items": [
+      "Road Trips",
+      "Backpacking",
+      "Camping",
+      "Exploring New Cities",
+      "Beach Vibes"
+    ]
+  },
+  "arts_creativity": {
+    "key": "arts_creativity",
+    "title": "Arts & Creativity",
+    "bgmColor": "#F39C12",
+    "items": [
+      "Drawing",
+      "Painting",
+      "Fashion",
+      "Tattoo Enthusiast",
+      "DIY & Crafts"
+    ]
+  },
+  "music_dance": {
+    "key": "music_dance",
+    "title": "Music & Dance",
+    "bgmColor": "#E74C3C",
+    "items": [
+      "EDM",
+      "Hip-Hop",
+      "Classical Music",
+      "Playing Guitar",
+      "Karaoke Nights",
+      "Salsa & Latin Dance"
+    ]
+  },
+  "lifestyle_personality": {
+    "key": "lifestyle_personality",
+    "title": "Lifestyle & Personality",
+    "bgmColor": "#2ECC71",
+    "items": [
+      "Pet Lover",
+      "Dog Person",
+      "Cat Person",
+      "Spirituality",
+      "Meditation",
+      "Astrology"
+    ]
+  }
+}

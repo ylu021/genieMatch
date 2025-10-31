@@ -30,6 +30,7 @@ const BioFullForm = ({
 }) => {
   const [editMode, setEditMode] = useState(false);
   const [formValue, setFormValue] = useState(userBio);
+  const [loadingContent, setLoading] = useState(loading);
 
   useEffect(() => {
     setFormValue(userBio);
@@ -40,7 +41,6 @@ const BioFullForm = ({
     setFormValue(userBio);
   };
   const updateFormChange = (type: BioFormCategory, input: string) => {
-    console.log("updateFormChange", type, input);
     setFormValue((prev) => {
       return {
         ...prev,
@@ -56,9 +56,11 @@ const BioFullForm = ({
       ? FormFormatter.parse(userPreferences)
       : DefaultPreferences;
     const promptFormatted = FormFormatter.generatePrompt(preferences);
+    setLoading(true);
     const response = await fetchResponse(promptFormatted, {
       "Cache-Control": "no-cache",
     });
+    setLoading(false);
     const data = response?.content ? JSON.parse(response?.content) : "";
 
     if (data) {
@@ -81,9 +83,11 @@ const BioFullForm = ({
     <View style={modalStyles.section}>
       {/* Bio */}
       <View style={modalStyles.section}>
-        <ThemedText type="subtitle">Your Bio</ThemedText>
+        <ThemedText type="subtitle" lightColor="white">
+          Your Bio
+        </ThemedText>
         {showAIMessage && (
-          <ThemedText>
+          <ThemedText lightColor="white">
             This is an example, click on AI Writer to try out your own profile!
           </ThemedText>
         )}
@@ -94,13 +98,15 @@ const BioFullForm = ({
           formValue={formValue.bio ?? ""}
           updateFormChange={updateFormChange}
           editMode={editMode}
-          loading={loading}
+          loading={loading || loadingContent}
         />
         {!editMode ? <BioEditIcon setEditMode={setEditMode} /> : null}
       </View>
       {/* Seeking */}
       <View style={modalStyles.section}>
-        <ThemedText type="subtitle">Seeking</ThemedText>
+        <ThemedText type="subtitle" lightColor="white">
+          Seeking
+        </ThemedText>
       </View>
       <LinearGradient
         colors={["#FF9509", "#FE2042"]}
@@ -112,14 +118,18 @@ const BioFullForm = ({
           formValue={formValue.interestSeeking ?? ""}
           updateFormChange={updateFormChange}
           editMode={editMode}
-          loading={loading}
+          loading={loading || loadingContent}
         />
         {!editMode ? <BioEditIcon setEditMode={setEditMode} /> : null}
       </LinearGradient>
       <View style={[modalStyles.section]}>
         <Button style={styles.aiButton} onPress={generateBio}>
           <FontAwesome name="magic" size={22} color={Colors.dark.text} />
-          <ThemedText style={styles.aiButtonText} darkColor={Colors.dark.text}>
+          <ThemedText
+            style={styles.aiButtonText}
+            darkColor={Colors.dark.text}
+            lightColor={Colors.dark.text}
+          >
             AI writer
           </ThemedText>
         </Button>

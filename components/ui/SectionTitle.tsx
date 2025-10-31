@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "OpenSans_700Bold",
     lineHeight: 20,
+    color: "white",
   },
 });
 
