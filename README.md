@@ -2,6 +2,9 @@
 
 This project explores how **Generative AI** and **prompt engineering** can help users craft more authentic, creative, and attention-grabbing Tinder bios.
 
+Download to try out: <img width="984" height="1520" alt="image" src="https://github.com/user-attachments/assets/6e4bdde7-a950-400e-b1dc-722cbb819af7" />
+
+
 ## 🎯 Overview
 The app provides a simple, swipe-based UI built with **React Native** and **Expo**.  
 While the swipe interface is intentionally minimal, its purpose is to serve as a **foundation for extending** the project — for example, integrating further models, personalization logic, or real-time feedback loops.
