@@ -1,50 +1,33 @@
-# Welcome to your Expo app 👋
+# GenieMatch (Expo / React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project explores how **Generative AI** and **prompt engineering** can help users craft more authentic, creative, and attention-grabbing Tinder bios.
 
-## Get started
+## 🎯 Overview
+The app provides a simple, swipe-based UI built with **React Native** and **Expo**.  
+While the swipe interface is intentionally minimal, its purpose is to serve as a **foundation for extending** the project — for example, integrating further models, personalization logic, or real-time feedback loops.
 
-1. Install dependencies
+## 🧠 Core Idea
+Writing a compelling Tinder bio can be a difficult task especially for people who are not good at expressing themselves.  
+This project uses **AI-powered text generation** and prompt to help users:
+- Allow user to select their [MBTI Personality](https://www.16personalities.com/free-personality-test), expressing themselves in their personality styles
+- Explore what kind of partner traits they are looking for
+- Highlight their unique personality traits
+- Convey authenticity and humor
 
-   ```bash
-   npm install
-   ```
+## 💻 Tech Stack
+- **React Native** (Expo)
+- **TypeScript / JavaScript**
+- **Swipeable UI Components** (e.g., `react-native-gesture-handler`)
+- **Generative AI Integration** (via API placeholder)
 
-2. Start the app
+## 🧩 Features
+- Swipe UI for navigating between profiles
+- Navbar configurations for filter and bio  
 
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+## 🚀 Getting Started
 ```bash
-npm run reset-project
-```
+# install dependencies
+npm install
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# run on iOS or Android
+npx expo start
