@@ -1,18 +1,17 @@
 import DraggableCard from "@/components/DraggableCard/DraggableCard";
 import { DropZone } from "@/components/DropZone/DropZone";
-import { DndContext, rectIntersection, type DragEndEvent } from "@dnd-kit/core";
-import { useState } from "react";
 import PROFILES from "@/constants/profile.json";
 import type { DeckSwipeDirection } from "@/types/deckSwipeActions";
 import type { Profile } from "@/types/profile";
+import { DndContext, rectIntersection, type DragEndEvent } from "@dnd-kit/core";
+import { useState } from "react";
 
 const TinderDeck = () => {
 	const [cards, setCards] = useState(PROFILES);
-	const [activeIndex, setActiveIndex] = useState(cards.length - 1); // top card index
 	const [swipeDirection, setSwipeDirection] =
 		useState<DeckSwipeDirection>(null);
 	const handleDragEnd = (event: DragEndEvent) => {
-		const { active, over } = event;
+		const { over } = event;
 
 		if (!over) {
 			return;
@@ -71,10 +70,7 @@ const TinderDeck = () => {
 				return [];
 			}}
 		>
-			<div
-				className="relative w-full bg-neutral-100 overflow-hidden"
-				style={{ height: "100dvh" }}
-			>
+			<div className="relative w-full bg-neutral-100 overflow-hidden h-dvh">
 				<DropZone id="left" side="left" />
 				<DropZone id="right" side="right" />
 				{/* Stack all cards */}
@@ -87,7 +83,6 @@ const TinderDeck = () => {
 						onSwipeEnd={handleSwipeEnd}
 						isTop={index === cards.length - 1}
 						zIndex={index + 1}
-						activeIndex={activeIndex}
 						onRequestSwipe={handleRequestSwipe}
 					/>
 				))}

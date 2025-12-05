@@ -11,11 +11,9 @@ const AppHeaderText = ({
 	return (
 		<ThemedText
 			style={{
-				fontSize: "46px",
 				fontFamily: "'Source Sans Pro', sans-serif",
-				fontWeight: "700",
-				lineHeight: "60px",
 			}}
+			className="text-5xl font-bold"
 			{...otherProps}
 		>
 			{children}

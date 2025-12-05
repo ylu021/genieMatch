@@ -17,12 +17,8 @@ const GradientButton = ({
 		<button
 			onClick={onClick}
 			disabled={disabled}
-			style={{
-				background: "linear-gradient(to right, #EC4899, #8B5CF6)",
-				border: "none",
-				cursor: disabled ? "not-allowed" : "pointer",
-				...style,
-			}}
+			className="bg-linear-gradient(to right, #FF6B6B, #4ECDC4) border-none cursor-pointer disabled:cursor-not-allowed"
+			style={style}
 			{...rest}
 		>
 			{children}

@@ -1,4 +1,4 @@
-import { AppHeaderText, ThemedText, Button, Overlay } from "@/components";
+import { AppHeaderText, ThemedText, Button } from "@/components";
 
 const backgroundImage = "/images/main-background3.png";
 

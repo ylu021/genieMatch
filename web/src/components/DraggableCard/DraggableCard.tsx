@@ -1,9 +1,9 @@
 // TinderCard.tsx
 import ProfileCard from "@/components/ProfileCard";
+import SwipeIndicator from "@/components/SwipeIndicator";
 import type { DeckSwipeDirection } from "@/types/deckSwipeActions";
 import type { Profile } from "@/types/profile";
 import { useDraggable } from "@dnd-kit/core";
-import { motion } from "framer-motion";
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 
 interface TinderCardProps {
@@ -155,28 +155,10 @@ export default function TinderCard({
 			className="shadow-xs rounded-lg overflow-hidden"
 		>
 			{shouldShowIndicator && currentDirection && (
-				<motion.div
-					key={currentDirection}
-					initial={{ scale: 0.6, opacity: 0 }}
-					animate={{
-						scale: 1,
-						opacity: indicatorOpacity,
-					}}
-					exit={{ scale: 0.6, opacity: 0 }}
-					transition={{ duration: 0.15 }}
-					className={`
-						absolute top-1/4 z-10
-						${
-							currentDirection === "right"
-								? "left-8 text-green-400 border-green-400 -rotate-12"
-								: "right-8 text-red-400 border-red-400 rotate-12"
-						}
-						top-[25%] border-[6px] font-black text-4xl sm:text-5xl uppercase px-6 py-3 rounded-xl
-  backdrop-blur-sm bg-white/30 shadow-[0_0_25px_rgba(0,0,0,0.5)] transition-all duration-75
-					`}
-				>
-					{currentDirection === "right" ? "LIKE" : "NOPE"}
-				</motion.div>
+				<SwipeIndicator
+					direction={currentDirection}
+					opacity={indicatorOpacity}
+				/>
 			)}
 			<ProfileCard profile={profile} />
 		</div>

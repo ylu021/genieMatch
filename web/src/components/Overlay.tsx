@@ -25,16 +25,9 @@ export default function Overlay({
 	return (
 		<div
 			style={{
-				padding: "20px",
-				borderRadius: "10px",
-				position: "absolute",
-				top: 0,
-				left: 0,
-				right: 0,
-				bottom: 0,
 				backgroundColor: getBackgroundColor(),
 			}}
-			className={className}
+			className={`p-5 rounded-[10px] absolute top-0 left-0 right-0 bottom-0 ${className}`}
 		/>
 	);
 }

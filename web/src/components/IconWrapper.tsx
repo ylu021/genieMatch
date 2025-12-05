@@ -42,11 +42,7 @@ const IconWrapper = ({ icon, index, updateSwipe }: IconWrapperProps) => {
       onMouseUp={handlePressOut}
       onTouchStart={handlePressIn}
       onTouchEnd={handlePressOut}
-      style={{
-        marginLeft: '25px',
-        marginRight: '25px',
-        cursor: 'pointer',
-      }}
+      className="ml-[25px] mr-[25px] cursor-pointer"
     >
       <motion.div
         animate={{ scale }}
