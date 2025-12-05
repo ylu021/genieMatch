@@ -1,0 +1,92 @@
+[
+	{
+		"id": "mind_energy",
+		"prompt_self": "What's your energy like?",
+		"prompt_partner": "Which type of date do you prefer more?",
+		"options": [
+			{
+				"id": "introvert",
+				"label_self": "I get energy from spending time alone",
+				"label_partner": "Cozy nights and deep talks"
+			},
+			{
+				"id": "extravert",
+				"label_self": "I get energy from hanging out with people",
+				"label_partner": "A night out — loud music, laughter, meeting new people"
+			}
+		],
+		"category": "mind_energy"
+	},
+	{
+		"id": "perception_style",
+		"prompt_self": "How do you tend to experience the world around you?",
+		"prompt_partner": "Who Sparks Your Interest?",
+		"options": [
+			{
+				"id": "sensing",
+				"label_self": "The Realist — practical, steady, grounded in the present",
+				"label_partner": "I’m drawn to people who are practical and keep life simple"
+			},
+			{
+				"id": "intuition",
+				"label_self": "The Visionary — creative, curious, always dreaming ahead",
+				"label_partner": "I’m drawn to people who imagine new possibilities and think deeply"
+			}
+		],
+		"category": "perception_style"
+	},
+	{
+		"id": "decision_style",
+		"prompt_self": "When you fight or disagree with someone you love, what’s more like you?",
+		"prompt_partner": "How do you like your partner to handle conflict?",
+		"options": [
+			{
+				"id": "thinking",
+				"label_self": "I stay calm — I focus on the facts and try to solve things logically",
+				"label_partner": "I’m drawn to people who keep their cool and talk things through"
+			},
+			{
+				"id": "feeling",
+				"label_self": "I lead with emotion — I need comfort and understanding before we talk it out",
+				"label_partner": "I’m drawn to people who give emotional warmth first, then work things out together"
+			}
+		],
+		"category": "decision_style"
+	},
+	{
+		"id": "pet_energy",
+		"prompt_self": "Are you more of a dog or cat person?",
+		"prompt_partner": "Which Sunday activity attracts you more?",
+		"options": [
+			{
+				"id": "dog_person",
+				"label_self": "Woof",
+				"label_partner": "Hiking"
+			},
+			{
+				"id": "cat_person",
+				"label_self": "Meow",
+				"label_partner": "Coffee shop"
+			}
+		],
+		"category": "lifestyle_preference"
+	},
+	{
+		"id": "identity_assertiveness",
+		"prompt_self": "When it comes to love, do you rush in or take things slow?",
+		"prompt_partner": "Which kind of energy feels right to you?",
+		"options": [
+			{
+				"id": "assertive",
+				"label_self": "I take things slow — I like to let love grow naturally",
+				"label_partner": "Calm and steady"
+			},
+			{
+				"id": "turbulent",
+				"label_self": "I’m spicy — passionate and full of feeling",
+				"label_partner": "Love hard and dive right in"
+			}
+		],
+		"category": "identity_assertiveness"
+	}
+]

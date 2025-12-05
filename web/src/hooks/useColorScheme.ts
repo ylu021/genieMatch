@@ -1,20 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export function useColorScheme(): 'light' | 'dark' {
-  const [colorScheme, setColorScheme] = useState<'light' | 'dark'>('dark');
+export function useColorScheme(): "light" | "dark" {
+	const [colorScheme, setColorScheme] = useState<"light" | "dark">("dark");
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    setColorScheme(mediaQuery.matches ? 'dark' : 'light');
+	useEffect(() => {
+		// Default to dark theme, ignore system preference
+		setColorScheme("dark");
+	}, []);
 
-    const handler = (e: MediaQueryListEvent) => {
-      setColorScheme(e.matches ? 'dark' : 'light');
-    };
-
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-
-  return colorScheme;
+	return colorScheme;
 }
-

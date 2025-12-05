@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
+import OnboardingPersonalityStep from "./pages/OnboardingPersonalityStep";
 
 function App() {
 	return (
@@ -10,6 +11,10 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/main" element={<Main />} />
+					<Route
+						path="/onboarding/personality"
+						element={<OnboardingPersonalityStep />}
+					/>
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</BrowserRouter>

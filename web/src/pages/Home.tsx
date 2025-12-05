@@ -33,10 +33,9 @@ export default function Home() {
 						Begin Your Journey
 					</ThemedText>
 				</Button>
-				<Button href="./signup" type="secondary" onPress={() => {}}>
+				<Button href="/onboarding/personality" onPress={() => {}}>
 					<ThemedText
 						style={{
-							color: "white",
 							fontFamily: "'Open Sans', sans-serif",
 							fontWeight: "700",
 						}}
