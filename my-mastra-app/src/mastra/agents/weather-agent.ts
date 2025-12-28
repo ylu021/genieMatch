@@ -2,6 +2,7 @@ import { Agent } from '@mastra/core/agent';
 import { Memory } from '@mastra/memory';
 import { LibSQLStore } from '@mastra/libsql';
 import { weatherTool } from '../tools/weather-tool';
+import { openaiTool } from '../tools/openai-tool';
 import { scorers } from '../scorers/weather-scorer';
 
 export const weatherAgent = new Agent({
@@ -21,7 +22,9 @@ export const weatherAgent = new Agent({
       Use the weatherTool to fetch current weather data.
 `,
   model: 'openai/gpt-4o-mini',
-  tools: { weatherTool },
+  // include the OpenAI proxy tool so the agent can delegate LLM calls to the server-side proxy
+  // (keeps API keys off the client). Tools are accessible by their ids from agent logic.
+  tools: { weatherTool, openaiTool },
   scorers: {
     toolCallAppropriateness: {
       scorer: scorers.toolCallAppropriatenessScorer,
