@@ -1,0 +1,364 @@
+{
+  "users": [
+    {
+      "user_id": "u_101",
+      "mbti": "INTJ-A",
+      "traits": {
+        "introversion": 0.88,
+        "abstraction": 0.72,
+        "logic": 0.9,
+        "judging": 0.8,
+        "assertiveness": 0.55,
+        "calm_affinity": 0.7
+      },
+      "demographics": {
+        "age": 30,
+        "gender": "male",
+        "location": { "city": "San Jose", "country": "US" },
+        "user_name": "Liam Parker"
+      }
+    },
+    {
+      "user_id": "u_102",
+      "mbti": "ENFP-T",
+      "traits": {
+        "introversion": 0.25,
+        "abstraction": 0.8,
+        "logic": 0.45,
+        "judging": 0.3,
+        "assertiveness": 0.6,
+        "calm_affinity": 0.4
+      },
+      "demographics": {
+        "age": 26,
+        "gender": "female",
+        "location": { "city": "New York", "country": "US" },
+        "user_name": "Ava Chen"
+      }
+    },
+    {
+      "user_id": "u_103",
+      "mbti": "ISFJ-T",
+      "traits": {
+        "introversion": 0.78,
+        "abstraction": 0.5,
+        "logic": 0.6,
+        "judging": 0.85,
+        "assertiveness": 0.4,
+        "calm_affinity": 0.9
+      },
+      "demographics": {
+        "age": 34,
+        "gender": "female",
+        "location": { "city": "London", "country": "UK" },
+        "user_name": "Sophie Brown"
+      }
+    },
+    {
+      "user_id": "u_104",
+      "mbti": "ENTP-A",
+      "traits": {
+        "introversion": 0.2,
+        "abstraction": 0.9,
+        "logic": 0.75,
+        "judging": 0.35,
+        "assertiveness": 0.85,
+        "calm_affinity": 0.5
+      },
+      "demographics": {
+        "age": 29,
+        "gender": "male",
+        "location": { "city": "Toronto", "country": "CA" },
+        "user_name": "Noah Martin"
+      }
+    },
+    {
+      "user_id": "u_105",
+      "mbti": "INFJ-A",
+      "traits": {
+        "introversion": 0.92,
+        "abstraction": 0.88,
+        "logic": 0.65,
+        "judging": 0.7,
+        "assertiveness": 0.5,
+        "calm_affinity": 0.85
+      },
+      "demographics": {
+        "age": 27,
+        "gender": "non_binary",
+        "location": { "city": "San Francisco", "country": "US" },
+        "user_name": "Taylor Nguyen"
+      }
+    },
+    {
+      "user_id": "u_106",
+      "mbti": "ESFJ-T",
+      "traits": {
+        "introversion": 0.35,
+        "abstraction": 0.45,
+        "logic": 0.5,
+        "judging": 0.9,
+        "assertiveness": 0.4,
+        "calm_affinity": 0.6
+      },
+      "demographics": {
+        "age": 31,
+        "gender": "female",
+        "location": { "city": "Sydney", "country": "AU" },
+        "user_name": "Mia Wilson"
+      }
+    },
+    {
+      "user_id": "u_107",
+      "mbti": "INTP-T",
+      "traits": {
+        "introversion": 0.8,
+        "abstraction": 0.93,
+        "logic": 0.88,
+        "judging": 0.35,
+        "assertiveness": 0.45,
+        "calm_affinity": 0.6
+      },
+      "demographics": {
+        "age": 24,
+        "gender": "male",
+        "location": { "city": "Beijing", "country": "CN" },
+        "user_name": "Wei Zhang"
+      }
+    },
+    {
+      "user_id": "u_108",
+      "mbti": "ESFP-A",
+      "traits": {
+        "introversion": 0.15,
+        "abstraction": 0.5,
+        "logic": 0.4,
+        "judging": 0.25,
+        "assertiveness": 0.8,
+        "calm_affinity": 0.45
+      },
+      "demographics": {
+        "age": 22,
+        "gender": "female",
+        "location": { "city": "Los Angeles", "country": "US" },
+        "user_name": "Isabella Garcia"
+      }
+    },
+    {
+      "user_id": "u_109",
+      "mbti": "ISTP-A",
+      "traits": {
+        "introversion": 0.6,
+        "abstraction": 0.55,
+        "logic": 0.7,
+        "judging": 0.4,
+        "assertiveness": 0.7,
+        "calm_affinity": 0.65
+      },
+      "demographics": {
+        "age": 36,
+        "gender": "male",
+        "location": { "city": "Berlin", "country": "DE" },
+        "user_name": "Felix Hoffmann"
+      }
+    },
+    {
+      "user_id": "u_110",
+      "mbti": "ENFJ-T",
+      "traits": {
+        "introversion": 0.28,
+        "abstraction": 0.7,
+        "logic": 0.6,
+        "judging": 0.78,
+        "assertiveness": 0.65,
+        "calm_affinity": 0.55
+      },
+      "demographics": {
+        "age": 33,
+        "gender": "female",
+        "location": { "city": "Paris", "country": "FR" },
+        "user_name": "Chloe Dubois"
+      }
+    },
+    {
+      "user_id": "u_111",
+      "mbti": "ISTJ-A",
+      "traits": {
+        "introversion": 0.7,
+        "abstraction": 0.4,
+        "logic": 0.82,
+        "judging": 0.9,
+        "assertiveness": 0.6,
+        "calm_affinity": 0.75
+      },
+      "demographics": {
+        "age": 41,
+        "gender": "male",
+        "location": { "city": "Chicago", "country": "US" },
+        "user_name": "James Carter"
+      }
+    },
+    {
+      "user_id": "u_112",
+      "mbti": "INFP-T",
+      "traits": {
+        "introversion": 0.85,
+        "abstraction": 0.9,
+        "logic": 0.5,
+        "judging": 0.45,
+        "assertiveness": 0.35,
+        "calm_affinity": 0.8
+      },
+      "demographics": {
+        "age": 28,
+        "gender": "female",
+        "location": { "city": "Madrid", "country": "ES" },
+        "user_name": "Lucia Morales"
+      }
+    },
+    {
+      "user_id": "u_113",
+      "mbti": "ENTJ-A",
+      "traits": {
+        "introversion": 0.3,
+        "abstraction": 0.78,
+        "logic": 0.92,
+        "judging": 0.88,
+        "assertiveness": 0.9,
+        "calm_affinity": 0.5
+      },
+      "demographics": {
+        "age": 38,
+        "gender": "male",
+        "location": { "city": "Austin", "country": "US" },
+        "user_name": "Ethan Brooks"
+      }
+    },
+    {
+      "user_id": "u_114",
+      "mbti": "ISFP-T",
+      "traits": {
+        "introversion": 0.65,
+        "abstraction": 0.6,
+        "logic": 0.48,
+        "judging": 0.4,
+        "assertiveness": 0.42,
+        "calm_affinity": 0.88
+      },
+      "demographics": {
+        "age": 23,
+        "gender": "non_binary",
+        "location": { "city": "Tokyo", "country": "JP" },
+        "user_name": "Haru Sato"
+      }
+    },
+    {
+      "user_id": "u_115",
+      "mbti": "ESTP-A",
+      "traits": {
+        "introversion": 0.18,
+        "abstraction": 0.45,
+        "logic": 0.6,
+        "judging": 0.3,
+        "assertiveness": 0.85,
+        "calm_affinity": 0.4
+      },
+      "demographics": {
+        "age": 35,
+        "gender": "male",
+        "location": { "city": "Seoul", "country": "KR" },
+        "user_name": "Minho Kim"
+      }
+    },
+    {
+      "user_id": "u_116",
+      "mbti": "ENFP-A",
+      "traits": {
+        "introversion": 0.22,
+        "abstraction": 0.85,
+        "logic": 0.55,
+        "judging": 0.4,
+        "assertiveness": 0.7,
+        "calm_affinity": 0.5
+      },
+      "demographics": {
+        "age": 29,
+        "gender": "female",
+        "location": { "city": "Mexico City", "country": "MX" },
+        "user_name": "Sofia Lopez"
+      }
+    },
+    {
+      "user_id": "u_117",
+      "mbti": "ISTP-T",
+      "traits": {
+        "introversion": 0.66,
+        "abstraction": 0.5,
+        "logic": 0.78,
+        "judging": 0.42,
+        "assertiveness": 0.6,
+        "calm_affinity": 0.55
+      },
+      "demographics": {
+        "age": 32,
+        "gender": "male",
+        "location": { "city": "Sao Paulo", "country": "BR" },
+        "user_name": "Lucas Silva"
+      }
+    },
+    {
+      "user_id": "u_118",
+      "mbti": "INFJ-T",
+      "traits": {
+        "introversion": 0.9,
+        "abstraction": 0.86,
+        "logic": 0.6,
+        "judging": 0.7,
+        "assertiveness": 0.35,
+        "calm_affinity": 0.92
+      },
+      "demographics": {
+        "age": 40,
+        "gender": "female",
+        "location": { "city": "Mumbai", "country": "IN" },
+        "user_name": "Priya Sharma"
+      }
+    },
+    {
+      "user_id": "u_119",
+      "mbti": "ENTP-T",
+      "traits": {
+        "introversion": 0.28,
+        "abstraction": 0.82,
+        "logic": 0.77,
+        "judging": 0.33,
+        "assertiveness": 0.78,
+        "calm_affinity": 0.48
+      },
+      "demographics": {
+        "age": 27,
+        "gender": "male",
+        "location": { "city": "Singapore", "country": "SG" },
+        "user_name": "Aaron Tan"
+      }
+    },
+    {
+      "user_id": "u_120",
+      "mbti": "ISFJ-A",
+      "traits": {
+        "introversion": 0.82,
+        "abstraction": 0.48,
+        "logic": 0.6,
+        "judging": 0.86,
+        "assertiveness": 0.38,
+        "calm_affinity": 0.8
+      },
+      "demographics": {
+        "age": 45,
+        "gender": "female",
+        "location": { "city": "Vancouver", "country": "CA" },
+        "user_name": "Margaret Lee"
+      }
+    }
+  ]
+}

@@ -17,7 +17,8 @@
 				"city": "San Francisco",
 				"country": "US"
 			},
-			"interested_in": ["male", "non_binary"]
+			"interested_in": ["male", "non_binary"],
+			"user_name": "bill gates"
 		}
 	},
 	"preferences": {
