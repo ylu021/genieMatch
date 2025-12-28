@@ -1,0 +1,61 @@
+{
+	"user_profile": {
+		"user_id": "u_001",
+		"mbti": "INTJ-A",
+		"traits": {
+			"introversion": 0.9,
+			"abstraction": 0.7,
+			"logic": 0.8,
+			"judging": 0.75,
+			"assertiveness": 0.6,
+			"calm_affinity": 0.7
+		},
+		"demographics": {
+			"age": 28,
+			"gender": "female",
+			"location": {
+				"city": "San Francisco",
+				"country": "US"
+			},
+			"interested_in": ["male", "non_binary"]
+		}
+	},
+	"preferences": {
+		"preferred_mbti": ["INTJ-A"],
+		"preferred_traits": {
+			"introversion": 0.8,
+			"abstraction": 0.7,
+			"logic": 0.8,
+			"judging": 0.7,
+			"assertiveness": 0.6,
+			"calm_affinity": 0.7
+		},
+		"weights": {
+			"mbti": 0.4,
+			"traits": 0.4,
+			"demographics": 0.2
+		}
+	},
+	"candidate_pool": [
+		{
+			"user_id": "u_101",
+			"mbti": "INTJ-A",
+			"traits": {
+				"introversion": 0.85,
+				"abstraction": 0.75,
+				"logic": 0.7,
+				"judging": 0.8,
+				"assertiveness": 0.5,
+				"calm_affinity": 0.6
+			},
+			"demographics": {
+				"age": 30,
+				"gender": "male",
+				"location": {
+					"city": "San Jose",
+					"country": "US"
+				}
+			}
+		}
+	]
+}
