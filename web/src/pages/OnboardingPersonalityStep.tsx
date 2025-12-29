@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ThemedText } from "@/components/ThemedText";
@@ -21,12 +21,29 @@ interface PersonalityStep {
 	category: string;
 }
 
+interface SelectionResult {
+	id: string;
+	choice: string;
+	phase: Phase;
+}
+
 const OnboardingPersonalityStep = () => {
 	const navigate = useNavigate();
 	const { setSelection, getSelections } = usePersonalityStore();
 	const [phase, setPhase] = useState<Phase>("self");
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+	// State to track all selections in the format: [{ id, choice, phase }, ...]
+	const [selectionResults, setSelectionResults] = useState<SelectionResult[]>(
+		[]
+	);
 	const questions = personalityStepsData as PersonalityStep[];
+
+	// Log selection results when they change (for debugging/verification)
+	useEffect(() => {
+		if (selectionResults.length > 0) {
+			console.log("Selection results:", selectionResults);
+		}
+	}, [selectionResults]);
 
 	const currentQuestion = questions[currentQuestionIndex];
 	const selections = getSelections(phase);
@@ -41,6 +58,30 @@ const OnboardingPersonalityStep = () => {
 		if (!currentQuestion) return;
 
 		setSelection(phase, currentQuestion.id, optionId);
+
+		// Add to selection results array
+		setSelectionResults((prev) => {
+			// Remove any existing selection for this question/phase combination
+			const filtered = prev.filter(
+				(item) => !(item.id === currentQuestion.id && item.phase === phase)
+			);
+			// Add the new selection
+			const updated = [
+				...filtered,
+				{
+					id: currentQuestion.id,
+					choice: optionId,
+					phase: phase,
+				},
+			];
+
+			// Log final results when all questions are completed
+			if (isLastQuestion && isLastPhase) {
+				console.log("Final selection results:", updated);
+			}
+
+			return updated;
+		});
 
 		personalityMock.recordChoice({
 			step: "personality_exploration",
