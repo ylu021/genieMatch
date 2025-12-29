@@ -36,27 +36,5 @@
 			"traits": 0.4,
 			"demographics": 0.2
 		}
-	},
-	"candidate_pool": [
-		{
-			"user_id": "u_101",
-			"mbti": "INTJ-A",
-			"traits": {
-				"introversion": 0.85,
-				"abstraction": 0.75,
-				"logic": 0.7,
-				"judging": 0.8,
-				"assertiveness": 0.5,
-				"calm_affinity": 0.6
-			},
-			"demographics": {
-				"age": 30,
-				"gender": "male",
-				"location": {
-					"city": "San Jose",
-					"country": "US"
-				}
-			}
-		}
-	]
+	}
 }

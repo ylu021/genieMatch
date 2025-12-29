@@ -41,7 +41,7 @@ const inputSchema = z.object({
 		.optional(),
 });
 
-// Output schema: matches input_example.json structure (without demographics)
+// Output schema: matches user-profile-example.json structure (without demographics)
 const outputSchema = z.object({
 	user_profile: z.object({
 		user_id: z.string().optional(),

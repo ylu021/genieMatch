@@ -1,0 +1,55 @@
+{
+	"items": [
+		{
+			"id": "mind_energy",
+			"choice": "introvert",
+			"phase": "self"
+		},
+		{
+			"id": "perception_style",
+			"choice": "sensing",
+			"phase": "self"
+		},
+		{
+			"id": "decision_style",
+			"choice": "thinking",
+			"phase": "self"
+		},
+		{
+			"id": "pet_energy",
+			"choice": "cat_person",
+			"phase": "self"
+		},
+		{
+			"id": "identity_assertiveness",
+			"choice": "assertive",
+			"phase": "self"
+		},
+		{
+			"id": "mind_energy",
+			"choice": "introvert",
+			"phase": "partner"
+		},
+		{
+			"id": "perception_style",
+			"choice": "intuition",
+			"phase": "partner"
+		},
+		{
+			"id": "decision_style",
+			"choice": "thinking",
+			"phase": "partner"
+		},
+		{
+			"id": "pet_energy",
+			"choice": "cat_person",
+			"phase": "partner"
+		},
+		{
+			"id": "identity_assertiveness",
+			"choice": "assertive",
+			"phase": "partner"
+		}
+	]
+}
+

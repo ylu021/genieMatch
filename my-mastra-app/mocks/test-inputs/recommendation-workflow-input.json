@@ -1,0 +1,23 @@
+{
+	"user_profile": {
+		"mbti": "ISTJ-A",
+		"traits": {
+			"introversion": 0.9,
+			"practicality": 0.7,
+			"logic": 0.8,
+			"calm_affinity": 0.7,
+			"assertiveness": 0.6
+		}
+	},
+	"preferences": {
+		"preferred_mbti": ["INTJ-A"],
+		"preferred_traits": {
+			"introversion": 0.9,
+			"practicality": 0.3,
+			"logic": 0.8,
+			"calm_affinity": 0.7,
+			"assertiveness": 0.6
+		}
+	}
+}
+
