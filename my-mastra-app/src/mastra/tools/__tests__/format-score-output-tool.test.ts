@@ -150,3 +150,9 @@ describe("formatScoreOutputTool", () => {
 		expect(result.reporting.per_trait).toBeUndefined();
 	});
 });
+
+
+
+
+
+

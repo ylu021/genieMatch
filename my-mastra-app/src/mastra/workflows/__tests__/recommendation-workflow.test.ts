@@ -306,12 +306,173 @@ describe("recommendationWorkflow", () => {
 		// Demographics from mock file should be used in scoring
 		// US candidates should score higher due to country match (from user_demographics.json)
 		expect(result.recommendations.length).toBeGreaterThan(0);
-		
+
 		// Verify recommendations are returned (demographics from mock are used internally)
-		const usCandidate = result.recommendations.find((r) => r.user_id === "u_101");
+		const usCandidate = result.recommendations.find(
+			(r) => r.user_id === "u_101"
+		);
 		if (usCandidate) {
 			expect(usCandidate.score).toBeGreaterThan(0);
 		}
 	});
-});
 
+	describe("pagination", () => {
+		const baseInput = {
+			user_profile: {
+				user_id: "u_001",
+				mbti: "ISTJ-A",
+				traits: {
+					introversion: 0.9,
+					practicality: 0.7,
+					logic: 0.8,
+					calm_affinity: 0.7,
+					assertiveness: 0.6,
+				},
+			},
+			preferences: {
+				preferred_mbti: ["INTJ-A"],
+				preferred_traits: {
+					introversion: 0.9,
+					practicality: 0.3,
+					logic: 0.8,
+					calm_affinity: 0.7,
+					assertiveness: 0.6,
+				},
+			},
+		};
+
+		it("should return all results when pagination is not provided (MVP mode)", async () => {
+			const result = await recommendationWorkflow.execute({
+				inputData: baseInput,
+				runtimeContext: mockRuntimeContext,
+			});
+
+			expect(result.recommendations.length).toBeGreaterThan(0);
+			expect(result.pagination).toBeDefined();
+			expect(result.pagination.hasMore).toBe(false);
+			expect(result.pagination.nextCursor).toBeUndefined();
+		});
+
+		it("should paginate results with limit", async () => {
+			const input = {
+				...baseInput,
+				pagination: {
+					limit: 5,
+				},
+			};
+
+			const result = await recommendationWorkflow.execute({
+				inputData: input,
+				runtimeContext: mockRuntimeContext,
+			});
+
+			expect(result.recommendations.length).toBe(5);
+			expect(result.pagination).toBeDefined();
+			expect(result.pagination.hasMore).toBe(true);
+			expect(result.pagination.nextCursor).toBeDefined();
+			expect(result.pagination.nextCursor).toBe(
+				result.recommendations[4].user_id
+			);
+		});
+
+		it("should return second page with cursor", async () => {
+			// First page
+			const firstPageInput = {
+				...baseInput,
+				pagination: {
+					limit: 5,
+				},
+			};
+
+			const firstResult = await recommendationWorkflow.execute({
+				inputData: firstPageInput,
+				runtimeContext: mockRuntimeContext,
+			});
+
+			expect(firstResult.recommendations.length).toBe(5);
+			expect(firstResult.pagination.hasMore).toBe(true);
+			expect(firstResult.pagination.nextCursor).toBeDefined();
+
+			// Second page using cursor
+			const secondPageInput = {
+				...baseInput,
+				pagination: {
+					limit: 5,
+					cursor: firstResult.pagination.nextCursor,
+				},
+			};
+
+			const secondResult = await recommendationWorkflow.execute({
+				inputData: secondPageInput,
+				runtimeContext: mockRuntimeContext,
+			});
+
+			expect(secondResult.recommendations.length).toBe(5);
+			// Verify no duplicates
+			const firstPageIds = firstResult.recommendations.map((r) => r.user_id);
+			const secondPageIds = secondResult.recommendations.map((r) => r.user_id);
+			const duplicates = firstPageIds.filter((id) =>
+				secondPageIds.includes(id)
+			);
+			expect(duplicates.length).toBe(0);
+		});
+
+		it("should return hasMore: false on last page", async () => {
+			// Request with large limit to get all results
+			const input = {
+				...baseInput,
+				pagination: {
+					limit: 100, // More than total candidates (20)
+				},
+			};
+
+			const result = await recommendationWorkflow.execute({
+				inputData: input,
+				runtimeContext: mockRuntimeContext,
+			});
+
+			expect(result.pagination.hasMore).toBe(false);
+			expect(result.pagination.nextCursor).toBeUndefined();
+		});
+
+		it("should handle pagination with different limits", async () => {
+			const limits = [3, 5, 10, 15];
+
+			for (const limit of limits) {
+				const input = {
+					...baseInput,
+					pagination: { limit },
+				};
+
+				const result = await recommendationWorkflow.execute({
+					inputData: input,
+					runtimeContext: mockRuntimeContext,
+				});
+
+				expect(result.recommendations.length).toBeLessThanOrEqual(limit);
+				expect(result.pagination).toBeDefined();
+			}
+		});
+
+		it("should include pagination metadata in response", async () => {
+			const input = {
+				...baseInput,
+				pagination: {
+					limit: 10,
+				},
+			};
+
+			const result = await recommendationWorkflow.execute({
+				inputData: input,
+				runtimeContext: mockRuntimeContext,
+			});
+
+			expect(result.pagination).toBeDefined();
+			expect(typeof result.pagination.hasMore).toBe("boolean");
+			if (result.pagination.hasMore) {
+				expect(result.pagination.nextCursor).toBeDefined();
+				expect(typeof result.pagination.nextCursor).toBe("string");
+			}
+		});
+	});
+});

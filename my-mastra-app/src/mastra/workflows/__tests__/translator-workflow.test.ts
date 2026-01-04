@@ -241,3 +241,9 @@ describe("translatorWorkflow", () => {
 		expect(result.reporting.normalized_distance).toBeDefined();
 	});
 });
+
+
+
+
+
+

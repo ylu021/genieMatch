@@ -1,12 +1,11 @@
-import { Agent } from '@mastra/core/agent';
-import { Memory } from '@mastra/memory';
-import { LibSQLStore } from '@mastra/libsql';
-import { recommendationScoringTool } from '../tools/recommendation-scoring-tool';
-import { scorers } from '../scorers/weather-scorer';
+import { Agent } from "@mastra/core/agent";
+import { Memory } from "@mastra/memory";
+import { LibSQLStore } from "@mastra/libsql";
+import { recommendationScoringTool } from "../tools/recommendation-scoring-tool";
 
 export const getRecommendationsAgent = new Agent({
-  name: 'Get Recommendations Agent',
-  instructions: `
+	name: "Get Recommendations Agent",
+	instructions: `
       You are a helpful matchmaking assistant that provides personalized user recommendations based on profiles and preferences.
 
       Your primary function is to help users find compatible matches. When responding:
@@ -19,35 +18,11 @@ export const getRecommendationsAgent = new Agent({
 
       Use the recommendationScoringTool to score and rank candidate users.
   `,
-  model: 'openai/gpt-4o-mini',
-  tools: { recommendationScoringTool },
-  scorers: {
-    toolCallAppropriateness: {
-      scorer: scorers.toolCallAppropriatenessScorer,
-      sampling: {
-        type: 'ratio',
-        rate: 1,
-      },
-    },
-    completeness: {
-      scorer: scorers.completenessScorer,
-      sampling: {
-        type: 'ratio',
-        rate: 1,
-      },
-    },
-    translation: {
-      scorer: scorers.translationScorer,
-      sampling: {
-        type: 'ratio',
-        rate: 1,
-      },
-    },
-  },
-  memory: new Memory({
-    storage: new LibSQLStore({
-      url: 'file:../mastra.db', // path is relative to the .mastra/output directory
-    }),
-  }),
+	model: "openai/gpt-4o-mini",
+	tools: { recommendationScoringTool },
+	memory: new Memory({
+		storage: new LibSQLStore({
+			url: "file:../mastra.db", // path is relative to the .mastra/output directory
+		}),
+	}),
 });
-

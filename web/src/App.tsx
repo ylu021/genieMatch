@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
 import OnboardingPersonalityStep from "./pages/OnboardingPersonalityStep";
+import RecommendationsDebug from "./components/RecommendationsDebug";
 
 function App() {
 	return (
@@ -14,6 +15,10 @@ function App() {
 					<Route
 						path="/onboarding/personality"
 						element={<OnboardingPersonalityStep />}
+					/>
+					<Route
+						path="/debug/recommendations"
+						element={<RecommendationsDebug />}
 					/>
 					<Route path="*" element={<NotFound />} />
 				</Routes>

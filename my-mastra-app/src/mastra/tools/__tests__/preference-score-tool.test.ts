@@ -260,3 +260,9 @@ describe("preferenceScoreTool", () => {
 		expect(result.normalized_distance).toBeLessThanOrEqual(1);
 	});
 });
+
+
+
+
+
+
